@@ -21,3 +21,10 @@ SELECT title, director FROM movies;
 SELECT title, year FROM movies;
 SELECT * FROM movies;
 `
+## SQL Lesson 2
+
+### Tasks
+
+Using the right constraints, find the information we need from the Movies table for each task below.
+
+### Answers
