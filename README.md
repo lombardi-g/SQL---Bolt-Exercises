@@ -116,10 +116,20 @@ FROM mytable
 WHERE condition(s);
 ```
 
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
 ### Answers
 
 There are a few concepts in this lesson, but all are pretty straight-forward to apply. To spice things up, we've gone and scrambled the Movies table for you in the exercise to better mimic what kind of data you might see in real life. Try and use the necessary keywords and clauses introduced above in your queries.
 
 ```sql
-
+SELECT DISTINCT director FROM movies ORDER BY director ASC;
+SELECT title, year FROM movies ORDER BY year DESC LIMIT 4;
+SELECT title, year FROM movies ORDER BY title ASC LIMIT 5;
+SELECT title, year FROM movies ORDER BY title ASC LIMIT 5 OFFSET 5;
 ```
