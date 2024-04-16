@@ -127,6 +127,13 @@ LIMIT num_limit OFFSET num_offset;
 
 There are a few concepts in this lesson, but all are pretty straight-forward to apply. To spice things up, we've gone and scrambled the Movies table for you in the exercise to better mimic what kind of data you might see in real life. Try and use the necessary keywords and clauses introduced above in your queries.
 
+
+    List all directors of Pixar movies (alphabetically), without duplicates
+    List the last four Pixar movies released (ordered from most recent to least)
+    List the first five Pixar movies sorted alphabetically
+    List the next five Pixar movies sorted alphabetically
+
+
 ```sql
 SELECT DISTINCT director FROM movies ORDER BY director ASC;
 SELECT title, year FROM movies ORDER BY year DESC LIMIT 4;
