@@ -140,3 +140,34 @@ SELECT title, year FROM movies ORDER BY year DESC LIMIT 4;
 SELECT title, year FROM movies ORDER BY title ASC LIMIT 5;
 SELECT title, year FROM movies ORDER BY title ASC LIMIT 5 OFFSET 5;
 ```
+
+## Review
+Simple SELECT Queries
+
+### Task
+You've done a good job getting to this point! Now that you've gotten a taste of how to write a basic query, you need to practice writing queries that solve actual problems.
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE condition(s)
+ORDER BY column ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+
+### Answers
+Try and write some queries to find the information requested in the tasks you know. You may have to use a different combination of clauses in your query for each task. Once you're done, continue onto the next lesson to learn about queries that span multiple tables.
+
+    List all the Canadian cities and their populations
+    Order all the cities in the United States by their latitude from north to south
+    List all the cities west of Chicago, ordered from west to east
+    List the two largest cities in Mexico (by population)
+    List the third and fourth largest cities (by population) in the United States and their population
+
+```sql
+SELECT city, country, population FROM north_american_cities WHERE country = "Canada";
+SELECT * FROM north_american_cities WHERE country = "United States" ORDER BY latitude DESC;
+SELECT * FROM north_american_cities WHERE longitude < -87.629798 ORDER BY longitude ASC;
+SELECT * FROM north_american_cities WHERE country = "Mexico" ORDER BY population DESC LIMIT 2;
+SELECT * FROM north_american_cities WHERE country = "United States" ORDER BY population DESC LIMIT 2 OFFSET 2;
+```
