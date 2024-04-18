@@ -171,3 +171,32 @@ SELECT * FROM north_american_cities WHERE longitude < -87.629798 ORDER BY longit
 SELECT * FROM north_american_cities WHERE country = "Mexico" ORDER BY population DESC LIMIT 2;
 SELECT * FROM north_american_cities WHERE country = "United States" ORDER BY population DESC LIMIT 2 OFFSET 2;
 ```
+
+## SQL Lesson 6
+Multi-table queries with JOINs
+
+### Tasks
+Up to now, we've been working with a single table, but entity data in the real world is often broken down into pieces and stored across multiple orthogonal tables using a process known as normalization
+```sql
+SELECT column, another_table_column, …
+FROM mytable
+INNER JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+
+### Answers
+
+We've added a new table to the Pixar database so that you can try practicing some joins. The BoxOffice table stores information about the ratings and sales of each particular Pixar movie, and the Movie_id column in that table corresponds with the Id column in the Movies table 1-to-1. Try and solve the tasks below using the INNER JOIN introduced above.
+
+    Find the domestic and international sales for each movie
+    Show the sales numbers for each movie that did better internationally rather than domestically
+    List all the movies by their ratings in descending order
+
+```sql
+SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id;
+SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id WHERE international_sales > domestic_sales;
+SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id ORDER BY rating desc;
+```
