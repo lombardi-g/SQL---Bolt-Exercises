@@ -200,3 +200,34 @@ SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id;
 SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id WHERE international_sales > domestic_sales;
 SELECT * FROM movies INNER JOIN boxoffice ON id = movie_id ORDER BY rating desc;
 ```
+
+## SQL Lesson 7
+OUTER JOINs
+
+### Tasks
+
+Depending on how you want to analyze the data, the INNER JOIN we used last lesson might not be sufficient because the resulting table only contains data that belongs in both of the tables.
+If the two tables have asymmetric data, which can easily happen when data is entered in different stages, then we would have to use a LEFT JOIN, RIGHT JOIN or FULL JOIN instead to ensure that the data you need is not left out of the results.
+```sql
+SELECT column, another_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+
+### Answers
+In this exercise, you are going to be working with a new table which stores fictional data about Employees in the film studio and their assigned office Buildings. Some of the buildings are new, so they don't have any employees in them yet, but we need to find some information about them regardless.
+Since our browser SQL database is somewhat limited, only the LEFT JOIN is supported in the exercise below.
+
+    Find the list of all buildings that have employees
+    Find the list of all buildings and their capacity
+    List all buildings and the distinct employee roles in each building (including empty buildings)
+
+```sql
+SELECT DISTINCT building FROM employees;
+SELECT * FROM buildings;
+SELECT DISTINCT building_name, role FROM buildings LEFT JOIN employees ON building_name = building;
+```
