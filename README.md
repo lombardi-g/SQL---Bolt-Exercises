@@ -231,3 +231,32 @@ SELECT DISTINCT building FROM employees;
 SELECT * FROM buildings;
 SELECT DISTINCT building_name, role FROM buildings LEFT JOIN employees ON building_name = building;
 ```
+
+## SQL Lesson 8
+A short note on NULLs
+
+### Tasks
+
+It's always good to reduce the possibility of NULL values in databases because they require special attention when constructing queries, constraints (certain functions behave differently with null values) and when processing the results.
+
+An alternative to NULL values in your database is to have data-type appropriate default values, like 0 for numerical data, empty strings for text data, etc. But if your database needs to store incomplete data, then NULL values can be appropriate if the default values will skew later analysis (for example, when taking averages of numerical data).
+
+```sql
+SELECT column, another_column, …
+FROM mytable
+WHERE column IS/IS NOT NULL
+AND/OR another_condition
+AND/OR …;
+```
+
+### Answers
+
+This exercise will be a sort of review of the last few lessons. We're using the same Employees and Buildings table from the last lesson, but we've hired a few more people, who haven't yet been assigned a building.
+
+    Find the name and role of all employees who have not been assigned to a building
+    Find the names of the buildings that hold no employees
+
+```sql
+SELECT name, role FROM employees WHERE building IS NULL;
+SELECT building_name FROM buildings LEFT JOIN employees ON building_name = building WHERE building IS NULL;
+```
