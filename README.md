@@ -260,3 +260,18 @@ This exercise will be a sort of review of the last few lessons. We're using the 
 SELECT name, role FROM employees WHERE building IS NULL;
 SELECT building_name FROM buildings LEFT JOIN employees ON building_name = building WHERE building IS NULL;
 ```
+
+## SQL Lesson 9
+Queries with expressions
+
+### Tasks
+
+In addition to querying and referencing raw column data with SQL, you can also use expressions to write more complex logic on column values in a query. These expressions can use mathematical and string functions along with basic arithmetic to transform values when the query is executed, as shown in this physics example.
+
+```sql
+SELECT particle_speed / 2.0 AS half_particle_speed
+FROM physics_data
+WHERE ABS(particle_position) * 10.0 > 500;
+```
+
+###  Answers
