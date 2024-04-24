@@ -275,3 +275,15 @@ WHERE ABS(particle_position) * 10.0 > 500;
 ```
 
 ###  Answers
+
+You are going to have to use expressions to transform the BoxOffice data into something easier to understand for the tasks below.
+
+    List all movies and their combined sales in millions of dollars
+    List all movies and their ratings in percent
+    List all movies that were released on even number years
+
+```sql
+SELECT title, (domestic_sales+international_sales)/1000000 AS total_sales FROM movies LEFT JOIN boxoffice ON id = boxoffice.movie_id;
+SELECT title, rating*10 AS PercentRating FROM movies LEFT JOIN boxoffice ON id = boxoffice.movie_id;
+SELECT title, year as evenyear FROM movies LEFT JOIN boxoffice ON id = boxoffice.movie_id WHERE year % 2 = 0;
+```
