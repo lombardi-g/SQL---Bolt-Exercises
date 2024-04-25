@@ -287,3 +287,37 @@ SELECT title, (domestic_sales+international_sales)/1000000 AS total_sales FROM m
 SELECT title, rating*10 AS PercentRating FROM movies LEFT JOIN boxoffice ON id = boxoffice.movie_id;
 SELECT title, year as evenyear FROM movies LEFT JOIN boxoffice ON id = boxoffice.movie_id WHERE year % 2 = 0;
 ```
+
+## SQL Lesson 10
+Queries with aggregates (Pt. 1)
+
+### Tasks
+
+In addition to the simple expressions that we introduced last lesson, SQL also supports the use of aggregate expressions (or functions) that allow you to summarize information about a group of rows of data.
+
+```sql
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, …
+FROM mytable
+WHERE constraint_expression;
+```
+| Function | Description |
+| --- | --- |
+| COUNT(*), COUNT(column) | A common function used to counts the number of rows in the group if no column name is specified. Otherwise, count the number of rows in the group with non-NULL values in the specified column. |
+| MIN(column) | Finds the smallest numerical value in the specified column for all rows in the group. |
+| MAX(column) | Finds the largest numerical value in the specified column for all rows in the group. |
+| AVG(column) | Finds the average numerical value in the specified column for all rows in the group. |
+| Sum(column) | Finds the sum of all numerical values in the specified column for the rows in the group.|
+
+### Answers
+
+For this exercise, we are going to work with our Employees table. Notice how the rows in this table have shared data, which will give us an opportunity to use aggregate functions to summarize some high-level metrics about the teams.
+
+    Find the longest time that an employee has been at the studio
+    For each role, find the average number of years employed by employees in that role
+    Find the total number of employee years worked in each building
+
+```sql
+SELECT role, MAX(years_employed) FROM employees;
+SELECT role, AVG(years_employed) FROM employees GROUP BY role;
+SELECT building, SUM(years_employed) FROM employees GROUP BY building;
+```
