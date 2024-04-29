@@ -321,3 +321,33 @@ SELECT role, MAX(years_employed) FROM employees;
 SELECT role, AVG(years_employed) FROM employees GROUP BY role;
 SELECT building, SUM(years_employed) FROM employees GROUP BY building;
 ```
+
+## SQL Lesson 11
+Queries with aggregates (Pt. 2)
+
+### Tasks
+
+Our queries are getting fairly complex, but we have nearly introduced all the important parts of a SELECT query. One thing that you might have noticed is that if the GROUP BY clause is executed after the WHERE clause (which filters the rows which are to be grouped), then how exactly do we filter the grouped rows?
+Luckily, SQL allows us to do this by adding an additional HAVING clause which is used specifically with the GROUP BY clause to allow us to filter grouped rows from the result set.
+
+```sql
+SELECT group_by_column, AGG_FUNC(column_expression) AS aggregate_result_alias, …
+FROM mytable
+WHERE condition
+GROUP BY column
+HAVING group_condition;
+```
+
+### Answers
+
+For this exercise, you are going to dive deeper into Employee data at the film studio. Think about the different clauses you want to apply for each task.
+
+    Find the number of Artists in the studio (without a HAVING clause)
+    Find the number of Employees of each role in the studio
+    Find the total number of years employed by all Engineers
+
+```sql
+SELECT COUNT(name) FROM employees WHERE role LIKE "artist";
+SELECT role, COUNT(name) AS employees FROM employees GROUP BY role;
+SELECT role, SUM(years_employed) FROM employees GROUP BY role HAVING role LIKE "engineer";
+```
