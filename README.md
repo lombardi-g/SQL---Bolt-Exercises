@@ -351,3 +351,35 @@ SELECT COUNT(name) FROM employees WHERE role LIKE "artist";
 SELECT role, COUNT(name) AS employees FROM employees GROUP BY role;
 SELECT role, SUM(years_employed) FROM employees GROUP BY role HAVING role LIKE "engineer";
 ```
+
+## SQL Lesson 12
+Order of execution of a Query
+
+### Tasks
+
+Now that we have an idea of all the parts of a query, we can now talk about how they all fit together in the context of a complete query.
+
+```sql
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), …
+FROM mytable
+    JOIN another_table
+      ON mytable.column = another_table.column
+    WHERE constraint_expression
+    GROUP BY column
+    HAVING constraint_expression
+    ORDER BY column ASC/DESC
+    LIMIT count OFFSET COUNT;
+```
+Query order of execution: FROM and JOIN, WHERE, GROUP BY, HAVING, SELECT, DISTINCT, ORDER BY, LIMIT/OFFSET.
+
+### Answers
+
+Here ends our lessons on SELECT queries, congrats of making it this far! This exercise will try and test your understanding of queries, so don't be discouraged if you find them challenging. Just try your best.
+
+    Find the number of movies each director has directed
+    Find the total domestic and international sales that can be attributed to each director
+
+```sql
+SELECT director, COUNT(Id) FROM movies GROUP BY director;
+SELECT director, SUM(domestic_sales)+ SUM(international_sales) as total_sales FROM movies LEFT JOIN boxoffice ON Id = movie_id GROUP BY director;
+```
