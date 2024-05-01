@@ -383,3 +383,31 @@ Here ends our lessons on SELECT queries, congrats of making it this far! This ex
 SELECT director, COUNT(Id) FROM movies GROUP BY director;
 SELECT director, SUM(domestic_sales)+ SUM(international_sales) as total_sales FROM movies LEFT JOIN boxoffice ON Id = movie_id GROUP BY director;
 ```
+
+## SQL Lesson 12
+Inserting rows
+
+### Tasks
+
+We've spent quite a few lessons on how to query for data in a database, so it's time to start learning a bit about SQL schemas and how to add new data.
+
+```sql
+INSERT INTO mytable
+(column, another_column, …)
+VALUES (value_or_expr, another_value_or_expr, …),
+      (value_or_expr_2, another_value_or_expr_2, …),
+      …;
+```
+
+### Answers
+
+In this exercise, we are going to play studio executive and add a few movies to the Movies to our portfolio. In this table, the Id is an auto-incrementing integer, so you can try inserting a row with only the other columns defined. 
+
+
+    Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+    Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table.
+
+```sql
+INSERT INTO movies VALUES (4, "Toy Story 4", null, null, null);
+INSERT INTO boxoffice VALUES (4, 8.7, 340000000, 270000000);
+```
