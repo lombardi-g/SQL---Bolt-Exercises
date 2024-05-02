@@ -384,7 +384,7 @@ SELECT director, COUNT(Id) FROM movies GROUP BY director;
 SELECT director, SUM(domestic_sales)+ SUM(international_sales) as total_sales FROM movies LEFT JOIN boxoffice ON Id = movie_id GROUP BY director;
 ```
 
-## SQL Lesson 12
+## SQL Lesson 13
 Inserting rows
 
 ### Tasks
@@ -410,4 +410,32 @@ In this exercise, we are going to play studio executive and add a few movies to 
 ```sql
 INSERT INTO movies VALUES (4, "Toy Story 4", null, null, null);
 INSERT INTO boxoffice VALUES (4, 8.7, 340000000, 270000000);
+```
+
+## SQL Lesson 14
+Updating rows
+
+### Tasks
+
+In addition to adding new data, a common task is to update existing data, which can be done using an UPDATE statement. Similar to the INSERT statement, you have to specify exactly which table, columns, and rows to update. In addition, the data you are updating has to match the data type of the columns in the table schema.
+
+```sql
+UPDATE mytable
+SET column = value_or_expr, 
+    other_column = another_value_or_expr, 
+    …
+WHERE condition;
+```
+
+### Answers
+It looks like some of the information in our Movies database might be incorrect, so go ahead and fix them through the exercises below.
+
+    The director for A Bug's Life is incorrect, it was actually directed by John Lasseter
+    The year that Toy Story 2 was released is incorrect, it was actually released in 1999
+    Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
+
+```sql
+UPDATE movies SET director = 'John Lasseter' WHERE id = 2;
+UPDATE movies SET year = 1999 WHERE title = 'Toy Story 2';
+UPDATE movies SET title = 'Toy Story 3', director = 'Lee Unkrich' WHERE title = 'Toy Story 8';
 ```
